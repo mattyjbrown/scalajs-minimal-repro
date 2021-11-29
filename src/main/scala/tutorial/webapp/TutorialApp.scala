@@ -4,6 +4,7 @@ import org.scalajs.dom
 import org.scalajs.dom.document
 
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 object TutorialApp {
   def main(args: Array[String]): Unit = {
@@ -30,7 +31,8 @@ object TutorialApp {
   }
 
   def addClickedMessage(): Unit = {
-    val s = Formatters.formatter.format(ZonedDateTime.now())
+    val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSz")
+    val s = formatter.format(ZonedDateTime.now())
     appendPar(document.body, s"You clicked the button!: ${s}")
   }
 }
