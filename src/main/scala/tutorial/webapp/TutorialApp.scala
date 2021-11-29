@@ -3,6 +3,8 @@ package tutorial.webapp
 import org.scalajs.dom
 import org.scalajs.dom.document
 
+import java.time.ZonedDateTime
+
 object TutorialApp {
   def main(args: Array[String]): Unit = {
     document.addEventListener("DOMContentLoaded", { (e: dom.Event) =>
@@ -28,6 +30,7 @@ object TutorialApp {
   }
 
   def addClickedMessage(): Unit = {
-    appendPar(document.body, "You clicked the button!")
+    val s = Formatters.formatter.format(ZonedDateTime.now())
+    appendPar(document.body, s"You clicked the button!: ${s}")
   }
 }
